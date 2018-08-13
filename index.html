@@ -49,6 +49,19 @@
    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
    ga('create', 'UA-853793-4', 'auto');
    ga('send', 'pageview');
+
+   function handleOutboundLinkClicks(event) {
+     ga('send', 'event', {
+       eventCategory: 'Outbound Link',
+       eventAction: 'click',
+       eventLabel: event.target.parentElement.href
+     });
+   }
+
+   var list = document.getElementsByTagName("a");
+   for (var i = 0; i < list.length; i++) {
+       list[i].addEventListener("click", handleOutboundLinkClicks);
+   }   
    </script>
    <script async src='https://www.google-analytics.com/analytics.js'></script>
    <!-- End Google Analytics -->
